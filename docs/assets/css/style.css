@@ -1,0 +1,89 @@
+/* 1) Defined palette as CSS variables */
+:root {
+  --color-bg: #f8f9fa;
+  --color-card: #ffffff;
+  --color-text: #333333;
+  --color-primary: #4a90e2;        /* calmer blue */
+  --color-primary-accent: #357ab8;
+}
+
+/* 2) Dark-mode overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1e1e24;
+    --color-card: #2a2a34;
+    --color-text: #e0e0e8;
+    --color-primary: #3a6ea5;      /* darker, muted blue */
+    --color-primary-accent: #2e5980;
+  }
+}
+
+:root[data-theme="dark"], 
+@media (prefers-color-scheme: dark){
+  /* same overrides as prefers-color-scheme rule */
+  --color-bg: #1e1e24;
+  --color-card: #2a2a34;
+  --color-text: #e0e0e8;
+  --color-primary: #3a6ea5;
+  --color-primary-accent: #2e5980;
+}
+:root[data-theme="light"] {
+  /* enforce light */
+  --color-bg: #f8f9fa;
+  --color-card: #ffffff;
+  --color-text: #333333;
+  --color-primary: #4a90e2;
+  --color-primary-accent: #357ab8;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.navbar, .card, footer {
+  background-color: var(--color-card) !important;
+}
+
+.card {
+  border-radius: .75rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+}
+
+/* Ensure all text inside cards uses the correct text color */
+.card, 
+.card .card-body, 
+.card .card-body * {
+  color: var(--color-text) !important;
+}
+
+/* Make links inside cards use the primary accent color */
+.card a {
+  color: var(--color-primary-accent);
+}
+.card a:hover {
+  color: var(--color-primary) !important;
+}
+
+/* override any elements that Bootstrap left white */
+footer {
+  color: var(--color-text);
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+/* 3) Override Bootstrap’s primary */
+.btn-primary, .navbar-dark .navbar-brand, .navbar-dark .btn-outline-light {
+  --bs-btn-bg: var(--color-primary);
+  --bs-btn-border-color: var(--color-primary);
+  color: #fff;
+}
+.btn-primary:hover {
+  background-color: var(--color-primary-accent);
+  border-color: var(--color-primary-accent);
+}
+
+/* 4) Optional toggle button styling */
+#theme-toggle {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
