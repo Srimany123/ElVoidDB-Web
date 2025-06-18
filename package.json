@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "ejs": "^3.1.10",
+    "ejs-cli": "^2.2.3",
     "express": "^5.1.0",
     "fs-extra": "^11.3.0",
     "highlight.js": "^11.11.1",
